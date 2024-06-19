@@ -59,7 +59,33 @@ function MainView() {
 
   return (
     <Box sx={{ bgcolor: "background.paper", height: "100%", py: 4 }}>
-      <Container maxWidth="lg" sx={{ flex: "1" }}>
+      <Box sx={{ display: "flex", flexDirection: "column", alignItems:"center", justifyContent: "center", gap:"30px" }}>
+        <Box sx={{width:"20rem"}}>
+          <SearchBar value={searchQuery} onChange={handleSearchChange} />
+        </Box>
+        <Box
+          sx={{
+            height: "60vh",
+            overflowY: "scroll",
+            borderRadius: "16px",
+            border: "solid 1px #4f95dc",
+            width:"40rem"
+          }}
+        >
+          <BooksDisplay
+            books={filteredBooks ? filteredBooks : books}
+            onBookClick={handleOpenDetailsModal}
+          />
+        </Box>
+        <Button
+          onClick={handleOpenAddModal}
+          variant="contained"
+          color="primary"
+        >
+          Add Book
+        </Button>
+      </Box>
+      {/* <Container maxWidth="lg" sx={{ flex: "1" }}>
         <Grid
           container
           justifyContent="center"
@@ -73,7 +99,7 @@ function MainView() {
             item
             xs={12}
             md={8}
-            sx={{ height: "80vh", overflowY: "scroll" }}
+            sx={{ height: "60vh", overflowY: "scroll", borderRadius: "16px", border: "solid 1px #4f95dc", marginTop: "30px"}}
           >
             <BooksDisplay
               books={filteredBooks ? filteredBooks : books}
@@ -90,7 +116,7 @@ function MainView() {
             </Button>
           </Grid>
         </Grid>
-      </Container>
+      </Container> */}
       <AddBookModal
         open={openAddModal}
         onClose={handleCloseAddModal}

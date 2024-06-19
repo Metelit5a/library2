@@ -56,7 +56,7 @@ export default function DeleteBookModal({ open, onClose, book, onDelete }) {
           color="primary"
           sx={{ mt: 2 }}
         >
-          Save
+          Delete
         </Button>
       </Paper>
     </Modal>
