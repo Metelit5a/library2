@@ -97,7 +97,6 @@ export default function BookDetailsModal({ open, onClose, book, onUpdate }) {
           sx={{ mt: 2 }}
         />
         <Select
-          label="Reading Status"
           variant="outlined"
           fullWidth
           value={readingStatus}

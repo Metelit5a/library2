@@ -102,7 +102,6 @@ export default function AddBookModal({ open, onClose, onAdd, propNames }) {
           <React.Fragment key={index}>
             {propName === "reading status" ? (
               <Select
-                label="reading status"
                 id="select"
                 variant="outlined"
                 fullWidth
