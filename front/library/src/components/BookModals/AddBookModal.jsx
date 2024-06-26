@@ -70,7 +70,7 @@ export default function AddBookModal({ open, onClose, onAdd, propNames }) {
       throw new Error("Failed to add new book");
     }
 
-    onAdd(newBook);
+    onAdd(response.data);
     onClose();
   };
 
