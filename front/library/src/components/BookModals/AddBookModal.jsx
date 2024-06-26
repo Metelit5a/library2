@@ -35,12 +35,14 @@ export default function AddBookModal({ open, onClose, onAdd, propNames }) {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(["reading status" ,"current page"].includes(name));
+    console.log(["reading status", "current page"].includes(name));
     let isValid;
     if (name === "published date") {
       isValid = isValidDate(value);
     } else {
-      isValid = ["reading status" ,"current page"].includes(name) || value.trim() !== "";
+      isValid =
+        ["reading status", "current page"].includes(name) ||
+        value.trim() !== "";
     }
     setFormData((prevData) => ({
       ...prevData,
@@ -60,8 +62,10 @@ export default function AddBookModal({ open, onClose, onAdd, propNames }) {
     for (const propName in formData) {
       let formattedPropName = propName.replace(/\s+/g, "_"); // Replace spaces with underscores
 
-      newBook[formattedPropName] = formattedPropName === "published_date" 
-      ? (new Date(formData[propName].value).toDateString()) : formData[propName].value;
+      newBook[formattedPropName] =
+        formattedPropName === "published_date"
+          ? new Date(formData[propName].value).toDateString()
+          : formData[propName].value;
     }
 
     const response = await createBook(newBook);
@@ -97,26 +101,22 @@ export default function AddBookModal({ open, onClose, onAdd, propNames }) {
         {propNames.map((propName, index) => (
           <React.Fragment key={index}>
             {propName === "reading status" ? (
-              <>
-                {/* <InputLabel id="reading-status-label">Reading Status</InputLabel> */}
-                <Select
-                  //    labelId="reading-status-label"
-                  label="reading status"
-                  id="select"
-                  variant="outlined"
-                  fullWidth
-                  value={formData[propName].value}
-                  onChange={handleChange}
-                  name={propName}
-                  sx={{ mt: 2 }}
-                >
-                  {statuses.map((status) => (
-                    <MenuItem key={status.id} value={status.id}>
-                      {status.name}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </>
+              <Select
+                label="reading status"
+                id="select"
+                variant="outlined"
+                fullWidth
+                value={formData[propName].value}
+                onChange={handleChange}
+                name={propName}
+                sx={{ mt: 2 }}
+              >
+                {statuses.map((status) => (
+                  <MenuItem key={status.id} value={status.id}>
+                    {status.name}
+                  </MenuItem>
+                ))}
+              </Select>
             ) : (
               <TextField
                 label={propName}
@@ -125,8 +125,11 @@ export default function AddBookModal({ open, onClose, onAdd, propNames }) {
                 value={formData[propName].value}
                 onChange={handleChange}
                 name={propName}
-                // error={!formData[propName].valid}
-                // helperText={!formData[propName].valid && `Please fill in ${propName}.`}
+                error={!formData[propName].valid}
+                helperText={
+                  !formData[propName].valid &&
+                  `Please correctly fill in ${propName}.`
+                }
                 sx={{ mt: 2 }}
               />
             )}
