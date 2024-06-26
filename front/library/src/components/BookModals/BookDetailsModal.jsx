@@ -40,6 +40,7 @@ export default function BookDetailsModal({ open, onClose, book, onUpdate }) {
       onUpdate({
         ...book,
         current_page: currentPage,
+        reading_status: readingStatus,
       });
     }
 
@@ -52,6 +53,7 @@ export default function BookDetailsModal({ open, onClose, book, onUpdate }) {
 
       onUpdate({
         ...book,
+        current_page: currentPage,
         reading_status: readingStatus,
       });
     }
