@@ -125,10 +125,10 @@ export default function AddBookModal({ open, onClose, onAdd, propNames }) {
                 onChange={handleChange}
                 name={propName}
                 error={!formData[propName].valid}
-                helperText={
-                  !formData[propName].valid &&
-                  `Please correctly fill in ${propName}.`
-                }
+                // helperText={
+                //   !formData[propName].valid &&
+                //   `Please correctly fill in ${propName}.`
+                // }
                 sx={{ mt: 2 }}
               />
             )}
